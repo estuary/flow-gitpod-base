@@ -1,0 +1,6 @@
+image:
+  file: flow.Dockerfile
+tasks:
+  name: Test
+  init: echo "testing" > testing.txt
+  command: echo "Welcome!"
