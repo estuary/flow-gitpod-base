@@ -19,5 +19,5 @@ MULTI_USE_REFRESH_TOKEN=$(
         "https://$FLOW_SUPABASE_HOST/rest/v1/rpc/create_refresh_token" \
         -d '{"multi_use": true, "valid_for": "1 day"}'
 ) 
-NEW_REFRESH_TOKEN=$($MULTI_USE_REFRESH_TOKEN | base64)
+NEW_REFRESH_TOKEN=$(echo "$MULTI_USE_REFRESH_TOKEN" | base64)
 export FLOW_AUTH_TOKEN=$NEW_REFRESH_TOKEN 
