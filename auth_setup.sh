@@ -8,14 +8,16 @@ ACCESS_TOKEN=$(
         -H "apikey: $FLOW_SUPABASE_ANON_TOKEN" \
         -H "Content-Type: application/json" \
         "https://$FLOW_SUPABASE_HOST/rest/v1/rpc/generate_access_token" \
-        -d "$ACCESS_TOKEN_REQUEST"
+        -d "$ACCESS_TOKEN_REQUEST" | jq -r '.access_token'
 )
 MULTI_USE_REFRESH_TOKEN=$(
     curl \
         -XPOST \
         -H "apikey: $FLOW_SUPABASE_ANON_TOKEN" \
         -H "Authorization: Bearer $ACCESS_TOKEN" \
-        "https://$FLOW_SUPABASE_HOST/rest/rpc/generate_refresh_token" \
-        -d '{"multi_use": true, "valid_for":"7 days"}'\
+        -H 'Content-Type: application/json' \
+        "https://$FLOW_SUPABASE_HOST/rest/v1/rpc/create_refresh_token" \
+        -d '{"multi_use": true, "valid_for": "1 day"}'
 ) 
-export FLOW_AUTH_TOKEN=$MULTI_USE_REFRESH_TOKEN
+NEW_REFRESH_TOKEN=$($MULTI_USE_REFRESH_TOKEN | base64)
+export FLOW_AUTH_TOKEN=$NEW_REFRESH_TOKEN 

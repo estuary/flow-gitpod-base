@@ -2,7 +2,8 @@ image:
   file: flow.Dockerfile
 tasks:
   - name: Exchange Single-Use refresh token with multi-use token
-    init: ./auth_setup.sh
+    # We need the dot to allow the script to set environment variables
+    init: . ./auth_setup.sh
     env:
       FLOW_SUPABASE_HOST: eyrcnmuzzyriypdajwdk.supabase.co
       FLOW_SUPABASE_ANON_TOKEN: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV5cmNubXV6enlyaXlwZGFqd2RrIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NDg3NTA1NzksImV4cCI6MTk2NDMyNjU3OX0.y1OyXD3-DYMz10eGxzo1eeamVMMUwIIeOoMryTRAoco
