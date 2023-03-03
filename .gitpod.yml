@@ -1,6 +1,6 @@
 image:
   file: flow.Dockerfile
 tasks:
-  - name: Test
-    init: echo "testing" > testing.txt
+  - name: Setup Flowctl Auth
+    init: flowctl auth token --token=$FLOW_AUTH_TOKEN
     command: echo "Welcome!"
