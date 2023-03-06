@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e # Tells bash to immediately exit on failure off a command
 
 REFRESH_TOEN=$(echo "$FLOW_REFRESH_TOKEN" | base64 -d)
 ACCESS_TOKEN_REQUEST=${REFRESH_TOEN/\"id\"/\"refresh_token_id\"}
@@ -21,3 +22,6 @@ MULTI_USE_REFRESH_TOKEN=$(
 ) 
 NEW_REFRESH_TOKEN=$(echo "$MULTI_USE_REFRESH_TOKEN" | tr -d '[:space:]' | base64 -w0)
 export FLOW_AUTH_TOKEN=$NEW_REFRESH_TOKEN
+
+# Tell anyone waiting on `gp sync-await auth` to proceed
+gp sync-done auth
