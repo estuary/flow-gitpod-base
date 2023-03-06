@@ -4,9 +4,7 @@ tasks:
   - name: Set up Flow auth from the provided FLOW_REFRESH_TOKEN, then pull the draft specified by FLOW_DRAFT_ID 
     # We need the dot to allow the script to set environment variables
     init: . ./auth_setup.sh
-    command: |
-      flowctl draft select --id $FLOW_DRAFT_ID
-      flowctl draft develop --output-dir flow_specs
+    command: echo "pizza"
     env:
       FLOW_SUPABASE_HOST: eyrcnmuzzyriypdajwdk.supabase.co
       FLOW_SUPABASE_ANON_TOKEN: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV5cmNubXV6enlyaXlwZGFqd2RrIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NDg3NTA1NzksImV4cCI6MTk2NDMyNjU3OX0.y1OyXD3-DYMz10eGxzo1eeamVMMUwIIeOoMryTRAoco
