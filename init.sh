@@ -21,7 +21,9 @@ MULTI_USE_REFRESH_TOKEN=$(
         -d '{"multi_use": true, "valid_for": "1 day"}'
 ) 
 NEW_REFRESH_TOKEN=$(echo "$MULTI_USE_REFRESH_TOKEN" | tr -d '[:space:]' | base64 -w0)
+
+# flowctl uses `FLOW_AUTH_TOKEN` if it exists, so this effectively logs us in
 export FLOW_AUTH_TOKEN=$NEW_REFRESH_TOKEN
 
-# Tell anyone waiting on `gp sync-await auth` to proceed
-gp sync-done auth
+flowctl draft select --id "$FLOW_DRAFT_ID"
+flowctl draft develop --output-dir flow_specs
