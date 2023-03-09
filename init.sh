@@ -1,8 +1,8 @@
 #!/bin/bash
 set -e # Tells bash to immediately exit on failure off a command
 
-REFRESH_TOEN=$(echo "$FLOW_REFRESH_TOKEN" | base64 -d)
-ACCESS_TOKEN_REQUEST=${REFRESH_TOEN/\"id\"/\"refresh_token_id\"}
+REFRESH_TOKEN=$(echo "$FLOW_REFRESH_TOKEN" | base64 -d)
+ACCESS_TOKEN_REQUEST=${REFRESH_TOKEN/\"id\"/\"refresh_token_id\"}
 ACCESS_TOKEN=$(
     curl \
         -XPOST \
