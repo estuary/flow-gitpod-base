@@ -7,7 +7,7 @@ REFRESH_TOKEN=$(echo "$FLOW_REFRESH_TOKEN" | base64 -d)
 # {"id" : "...", "secret" : "..."}
 # But `generate_access_token` expects
 # {"refresh_token_id" : "...", "secret" : "..."}
-ACCESS_TOKEN_REQUEST=$(echo "$REFRESH_TOKEN" | jq -c -r '. + {"refresh_token_id": .id}| del(.id)')
+ACCESS_TOKEN_REQUEST=$(echo "$REFRESH_TOKEN" | jq -c -r '{"refresh_token_id": .id, "secret": .secret}')
 
 ACCESS_TOKEN=$(
     curl \
