@@ -32,4 +32,4 @@ NEW_REFRESH_TOKEN=$(echo "$MULTI_USE_REFRESH_TOKEN" | tr -d '[:space:]' | base64
 export FLOW_AUTH_TOKEN=$NEW_REFRESH_TOKEN
 
 flowctl draft select --id "$FLOW_DRAFT_ID"
-flowctl draft develop --output-dir flow_specs
+flowctl draft develop
