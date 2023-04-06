@@ -33,3 +33,4 @@ export FLOW_AUTH_TOKEN=$NEW_REFRESH_TOKEN
 
 flowctl draft select --id "$FLOW_DRAFT_ID"
 flowctl draft develop
+flowctl generate --source flow.yaml
