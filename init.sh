@@ -7,7 +7,7 @@ REFRESH_TOKEN=$(echo "$FLOW_REFRESH_TOKEN" | base64 -d)
 # {"id" : "...", "secret" : "..."}
 # But `generate_access_token` expects
 # {"refresh_token_id" : "...", "secret" : "..."}
-ACCESS_TOKEN_REQUEST=$(echo "$REFRESH_TOKEN" | jq -c -r '. + {"refresh_token_id": .id}| del(.id)')
+ACCESS_TOKEN_REQUEST=$(echo "$REFRESH_TOKEN" | jq -c -r '{"refresh_token_id": .id, "secret": .secret}')
 
 ACCESS_TOKEN=$(
     curl \
@@ -32,4 +32,5 @@ NEW_REFRESH_TOKEN=$(echo "$MULTI_USE_REFRESH_TOKEN" | tr -d '[:space:]' | base64
 export FLOW_AUTH_TOKEN=$NEW_REFRESH_TOKEN
 
 flowctl draft select --id "$FLOW_DRAFT_ID"
-flowctl draft develop --output-dir flow_specs
+flowctl draft develop
+flowctl generate --source flow.yaml
