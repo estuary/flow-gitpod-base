@@ -1,5 +1,8 @@
 #!/bin/bash
-set -e # Tells bash to immediately exit on failure off a command
+
+set -o errexit
+set -o pipefail
+set -o nounset
 
 REFRESH_TOKEN=$(echo "$FLOW_REFRESH_TOKEN" | base64 -d)
 
@@ -8,6 +11,11 @@ REFRESH_TOKEN=$(echo "$FLOW_REFRESH_TOKEN" | base64 -d)
 # But `generate_access_token` expects
 # {"refresh_token_id" : "...", "secret" : "..."}
 ACCESS_TOKEN_REQUEST=$(echo "$REFRESH_TOKEN" | jq -c -r '{"refresh_token_id": .id, "secret": .secret}')
+
+# TODO(johnny): There are multiple things to fix here:
+#  * Use `flowctl raw`, as in `flowctl raw rpc --function generate_access_token`, rather than `curl`.
+#  * Update the *current* refresh token rather than creating a new one,
+#    rotating its secret and setting it to mulit-use with valid-for of 90 days up to a year.
 
 ACCESS_TOKEN=$(
     curl \
