@@ -4,41 +4,24 @@ set -o errexit
 set -o pipefail
 set -o nounset
 
-REFRESH_TOKEN=$(echo "$FLOW_REFRESH_TOKEN" | base64 -d)
+# TODO(johnny): We should update `flowctl` to accept a refresh token via `flowctl auth token --token $REFRESH_TOKEN`
+# It should take ownership of the provided refresh token rather than create a new one, as it does today.
+# It also must handle secret rotation for non-multi-use refresh tokens, as this one is.
 
-# Replace "id" with "refresh_token_id" because `create_refresh_token` returns
-# {"id" : "...", "secret" : "..."}
-# But `generate_access_token` expects
-# {"refresh_token_id" : "...", "secret" : "..."}
-ACCESS_TOKEN_REQUEST=$(echo "$REFRESH_TOKEN" | jq -c -r '{"refresh_token_id": .id, "secret": .secret}')
-
-# TODO(johnny): There are multiple things to fix here:
-#  * Use `flowctl raw`, as in `flowctl raw rpc --function generate_access_token`, rather than `curl`.
-#  * Update the *current* refresh token rather than creating a new one,
-#    rotating its secret and setting it to mulit-use with valid-for of 90 days up to a year.
-
+# The --body below maps {id, secret} into {refresh_token_id, secret},
+# which are the parameters expected by `generate_access_token`.
+# As this is a single-use token, we can only do this one time.
 ACCESS_TOKEN=$(
-    curl \
-        -XPOST \
-        -H "apikey: $FLOW_SUPABASE_ANON_TOKEN" \
-        -H "Content-Type: application/json" \
-        "https://$FLOW_SUPABASE_HOST/rest/v1/rpc/generate_access_token" \
-        -d "$ACCESS_TOKEN_REQUEST" | jq -r -c '.access_token'
+    ~/flowctl raw rpc \
+    --function generate_access_token \
+    --body $(echo "$FLOW_REFRESH_TOKEN" | base64 -d | jq -c -r '{"refresh_token_id": .id, "secret": .secret}') \
+    | jq -r -c '.access_token'
 )
-MULTI_USE_REFRESH_TOKEN=$(
-    curl \
-        -XPOST \
-        -H "apikey: $FLOW_SUPABASE_ANON_TOKEN" \
-        -H "Authorization: Bearer $ACCESS_TOKEN" \
-        -H 'Content-Type: application/json' \
-        "https://$FLOW_SUPABASE_HOST/rest/v1/rpc/create_refresh_token" \
-        -d '{"multi_use": true, "valid_for": "1 day"}'
-) 
-NEW_REFRESH_TOKEN=$(echo "$MULTI_USE_REFRESH_TOKEN" | tr -d '[:space:]' | base64 -w0)
 
-# flowctl uses `FLOW_AUTH_TOKEN` if it exists, so this effectively logs us in
-export FLOW_AUTH_TOKEN=$NEW_REFRESH_TOKEN
+# Ask flowctl to create a persistent refresh token, which will be available
+# in subsequent starts of the development container.
+flowctl auth token --token ${ACCESS_TOKEN}
 
-flowctl draft select --id "$FLOW_DRAFT_ID"
-flowctl draft develop
-flowctl generate --source flow.yaml
+# Select and fetch the user's draft.
+flowctl draft select --id "$FLOW_DRAFT_ID" > /dev/null
+flowctl draft develop --target /workspace/flow/flow.yaml
