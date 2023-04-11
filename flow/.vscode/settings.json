@@ -1,13 +1,19 @@
 {
-    //"gitpod.showReleaseNotes": false,
+    // Don't show gitpod release notes.
+    "gitpod.showReleaseNotes": false,
     // Show Markdown preview when opening README.md
-    //"workbench.editorAssociations": {
-    //    "README.md": "vscode.markdown.preview.editor",
-    //},
+    "workbench.editorAssociations": {
+        "README.md": "vscode.markdown.preview.editor",
+    },
     // Show readme on startup.
     "workbench.startupEditor": "readme",
     // Disable prompting about our parent git repository.
     "git.openRepositoryInParentFolders": "never",
-    // Always use Deno.
-    "deno.enable": true
+    // Format files on save.
+    "editor.formatOnSave": true,
+    // Always use Deno and enable linting.
+    "deno.enable": true,
+    "deno.lint": true,
+    // Format TypeScript files using deno.
+    "[typescript]": { "editor.defaultFormatter": "denoland.vscode-deno" }
 }
