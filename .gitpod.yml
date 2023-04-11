@@ -3,7 +3,8 @@ image:
 vscode:
   extensions:
     - "redhat.vscode-yaml"
+checkoutLocation: "/workspace"
 workspaceLocation: "/workspace/flow"
 tasks:
   - name: Initialize Flow CLI
-    init: ./init.sh
+    init: /workspace/init.sh

@@ -12,7 +12,7 @@ set -o nounset
 # which are the parameters expected by `generate_access_token`.
 # As this is a single-use token, we can only do this one time.
 ACCESS_TOKEN=$(
-    ~/flowctl raw rpc \
+    flowctl raw rpc \
     --function generate_access_token \
     --body $(echo "$FLOW_REFRESH_TOKEN" | base64 -d | jq -c -r '{"refresh_token_id": .id, "secret": .secret}') \
     | jq -r -c '.access_token'
