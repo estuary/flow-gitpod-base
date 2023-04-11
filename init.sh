@@ -29,3 +29,5 @@ flowctl auth token --token ${ACCESS_TOKEN}
 # Select and fetch the user's draft.
 flowctl draft select --id "$FLOW_DRAFT_ID" > /dev/null
 flowctl draft develop --target /workspace/flow/flow.yaml
+
+echo "Welcome to the Flow development container. View README for help getting started."

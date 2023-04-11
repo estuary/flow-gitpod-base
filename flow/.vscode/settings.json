@@ -1,9 +1,13 @@
 {
-    "gitpod.showReleaseNotes": false,
+    //"gitpod.showReleaseNotes": false,
     // Show Markdown preview when opening README.md
     //"workbench.editorAssociations": {
     //    "README.md": "vscode.markdown.preview.editor",
     //},
     // Show readme on startup.
-    "workbench.startupEditor": "readme"
+    "workbench.startupEditor": "readme",
+    // Disable prompting about our parent git repository.
+    "git.openRepositoryInParentFolders": "never",
+    // Always use Deno.
+    "deno.enable": true
 }

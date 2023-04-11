@@ -3,6 +3,7 @@ image:
 vscode:
   extensions:
     - "redhat.vscode-yaml"
+    - "denoland.vscode-deno"
 checkoutLocation: "."
 workspaceLocation: "flow"
 tasks:

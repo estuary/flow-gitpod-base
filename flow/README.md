@@ -1,4 +1,4 @@
-# Flow Development Container
+# Flow Development
 
 Let's get you started.
 
