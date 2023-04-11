@@ -8,13 +8,17 @@ set -o nounset
 # It should take ownership of the provided refresh token rather than create a new one, as it does today.
 # It also must handle secret rotation for non-multi-use refresh tokens, as this one is.
 
-# The --body below maps {id, secret} into {refresh_token_id, secret},
+# The --data below maps {id, secret} into {refresh_token_id, secret},
 # which are the parameters expected by `generate_access_token`.
 # As this is a single-use token, we can only do this one time.
 ACCESS_TOKEN=$(
-    flowctl raw rpc \
-    --function generate_access_token \
-    --body $(echo "$FLOW_REFRESH_TOKEN" | base64 -d | jq -c -r '{"refresh_token_id": .id, "secret": .secret}') \
+    curl \
+        -XPOST \
+        -H "apikey: $FLOW_SUPABASE_ANON_TOKEN" \
+        -H "Content-Type: application/json" \
+        "https://$FLOW_SUPABASE_HOST/rest/v1/rpc/generate_access_token" \
+        --data $(echo "$FLOW_REFRESH_TOKEN" | base64 -d | jq -c -r '{"refresh_token_id": .id, "secret": .secret}') \
+        --silent \
     | jq -r -c '.access_token'
 )
 
