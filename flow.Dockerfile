@@ -1,5 +1,5 @@
 # You can find the latest tags here: https://github.com/estuary/flow/pkgs/container/flow
-FROM ghcr.io/estuary/flow:v0.3.6-3-g3d36b8245 as flow_base
+FROM ghcr.io/estuary/flow:v0.3.6-12-g17855554b as flow_base
 
 # You can find the new timestamped tags here: https://hub.docker.com/r/gitpod/workspace-base/tags
 FROM gitpod/workspace-base:2023-09-18-16-44-58
