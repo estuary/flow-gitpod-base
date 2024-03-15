@@ -1,0 +1,22 @@
+---
+collections:
+  PineApple/requests_createPolicy:
+    schema:
+      type: object
+      properties:
+        your_key:
+          type: string
+      required:
+        - your_key
+    key:
+      - /your_key
+    derive:
+      using:
+        sqlite:
+          migrations:
+            - requests_createPolicy.migration.0.sql
+      transforms:
+        - name: iwyze_requests
+          source: PineApple/Mongo_pipeline/pineapple/iwyze_requests
+          shuffle: any
+          lambda: requests_createPolicy.lambda.iwyze_requests.sql

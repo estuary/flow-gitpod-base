@@ -1,0 +1,57 @@
+2024-03-15 08:14:24.271 [info] 
+
+
+
+
+2024-03-15 08:14:24.271 [info] Extension host agent started.
+2024-03-15 08:14:24.271 [info] Started initializing default profile extensions in extensions installation folder. file:///workspace/.vscode-remote/extensions
+2024-03-15 08:14:24.280 [info] Completed initializing default profile extensions in extensions installation folder. file:///workspace/.vscode-remote/extensions
+2024-03-15 08:14:24.878 [info] Installing builtin extension 'gitpod.gitpod-theme'...
+2024-03-15 08:14:24.915 [info] Installing builtin extension 'github.vscode-pull-request-github'...
+2024-03-15 08:14:25.101 [info] Getting Manifest... gitpod.gitpod-theme
+2024-03-15 08:14:25.101 [info] Getting Manifest... github.vscode-pull-request-github
+2024-03-15 08:14:25.388 [info] Installing extension: gitpod.gitpod-theme
+2024-03-15 08:14:25.388 [info] Installing extension: github.vscode-pull-request-github
+2024-03-15 08:14:26.744 [error] Could not load vsce-sign module Cannot find module '@vscode/vsce-sign'
+Require stack:
+- /ide/out/server-main.js
+2024-03-15 08:14:26.746 [info] Extension signature verification is not done: gitpod.gitpod-theme
+2024-03-15 08:14:26.770 [error] Could not load vsce-sign module Cannot find module '@vscode/vsce-sign'
+Require stack:
+- /ide/out/server-main.js
+2024-03-15 08:14:26.771 [info] Extension signature verification is not done: github.vscode-pull-request-github
+2024-03-15 08:14:26.786 [info] Extracted extension to file:///workspace/.vscode-remote/extensions/gitpod.gitpod-theme-0.0.2-universal: gitpod.gitpod-theme
+2024-03-15 08:14:26.789 [info] Renamed to /workspace/.vscode-remote/extensions/gitpod.gitpod-theme-0.0.2-universal
+2024-03-15 08:14:26.792 [info] Extracting extension completed. gitpod.gitpod-theme
+2024-03-15 08:14:26.851 [info] Extracted extension to file:///workspace/.vscode-remote/extensions/github.vscode-pull-request-github-0.82.0-universal: github.vscode-pull-request-github
+2024-03-15 08:14:26.855 [info] Renamed to /workspace/.vscode-remote/extensions/github.vscode-pull-request-github-0.82.0-universal
+2024-03-15 08:14:26.858 [info] Extracting extension completed. github.vscode-pull-request-github
+2024-03-15 08:14:26.863 [info] Extension installed successfully: gitpod.gitpod-theme
+2024-03-15 08:14:26.863 [info] Extension installed successfully: github.vscode-pull-request-github
+2024-03-15 08:14:26.864 [info] Extension 'gitpod.gitpod-theme' v0.0.2 was successfully installed.
+2024-03-15 08:14:26.864 [info] Extension 'github.vscode-pull-request-github' v0.82.0 was successfully installed.
+2024-03-15 08:14:26.864 [info] Installing extensions...
+2024-03-15 08:14:27.362 [info] Installing extension 'redhat.vscode-yaml'...
+2024-03-15 08:14:27.416 [info] Installing extension 'denoland.vscode-deno'...
+2024-03-15 08:14:27.416 [info] Getting Manifest... redhat.vscode-yaml
+2024-03-15 08:14:27.416 [info] Getting Manifest... denoland.vscode-deno
+2024-03-15 08:14:27.703 [info] Installing extension: redhat.vscode-yaml
+2024-03-15 08:14:27.703 [info] Installing extension: denoland.vscode-deno
+2024-03-15 08:14:28.774 [error] Could not load vsce-sign module Cannot find module '@vscode/vsce-sign'
+Require stack:
+- /ide/out/server-main.js
+2024-03-15 08:14:28.774 [info] Extension signature verification is not done: denoland.vscode-deno
+2024-03-15 08:14:28.811 [info] Extracted extension to file:///workspace/.vscode-remote/extensions/denoland.vscode-deno-3.35.1-universal: denoland.vscode-deno
+2024-03-15 08:14:28.815 [info] Renamed to /workspace/.vscode-remote/extensions/denoland.vscode-deno-3.35.1-universal
+2024-03-15 08:14:28.816 [info] Extracting extension completed. denoland.vscode-deno
+2024-03-15 08:14:28.850 [error] Could not load vsce-sign module Cannot find module '@vscode/vsce-sign'
+Require stack:
+- /ide/out/server-main.js
+2024-03-15 08:14:28.851 [info] Extension signature verification is not done: redhat.vscode-yaml
+2024-03-15 08:14:28.910 [info] Extracted extension to file:///workspace/.vscode-remote/extensions/redhat.vscode-yaml-1.14.0-universal: redhat.vscode-yaml
+2024-03-15 08:14:28.913 [info] Renamed to /workspace/.vscode-remote/extensions/redhat.vscode-yaml-1.14.0-universal
+2024-03-15 08:14:28.915 [info] Extracting extension completed. redhat.vscode-yaml
+2024-03-15 08:14:28.923 [info] Extension installed successfully: denoland.vscode-deno
+2024-03-15 08:14:28.923 [info] Extension installed successfully: redhat.vscode-yaml
+2024-03-15 08:14:28.923 [info] Extension 'denoland.vscode-deno' v3.35.1 was successfully installed.
+2024-03-15 08:14:28.923 [info] Extension 'redhat.vscode-yaml' v1.14.0 was successfully installed.
