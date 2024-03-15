@@ -1659,4 +1659,4 @@ select
     $user_id,
     -- Field zaIdNumber at /zaIdNumber
     $zaIdNumber
-;
+where $type = "createPolicy";
