@@ -7,9 +7,9 @@ collections:
         your_key:
           type: string
       required:
-        - your_key
+        - _id
     key:
-      - /your_key
+      - /_id
     derive:
       using:
         sqlite:
