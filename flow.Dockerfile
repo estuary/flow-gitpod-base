@@ -16,7 +16,7 @@ RUN sudo curl -o /usr/local/bin/flowctl -L 'https://github.com/estuary/flow/rele
     && sudo chmod +x /usr/local/bin/flowctl \
     && sudo curl -o /usr/local/bin/sops -L https://github.com/getsops/sops/releases/download/v3.9.0/sops-v3.9.0.linux.amd64 \
     && sudo chmod +x /usr/local/bin/sops \
-    && curl -L -o /tmp/deno.zip https://github.com/denoland/deno/releases/download/v1.32.1/deno-x86_64-unknown-linux-gnu.zip \
+    && curl -L -o /tmp/deno.zip https://github.com/denoland/deno/releases/download/v1.46.2/deno-x86_64-unknown-linux-gnu.zip \
 		&& unzip /tmp/deno.zip -d /tmp \
 		&& rm /tmp/deno.zip \
 		&& sudo mv /tmp/deno /usr/local/bin/
