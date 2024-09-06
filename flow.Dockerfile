@@ -17,7 +17,7 @@ RUN echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.
     && sudo rm -rf /var/lib/apt/lists/*
 
 
-RUN sudo curl -o /usr/local/bin/flowctl -L "https://github.com/estuary/flow/releases/${FLOW_VERSION}/download/flowctl-x86_64-linux" \
+RUN sudo curl -o /usr/local/bin/flowctl -L "https://github.com/estuary/flow/releases/download/${FLOW_VERSION}/flowctl-x86_64-linux" \
     && sudo chmod +x /usr/local/bin/flowctl \
     && sudo curl -o /usr/local/bin/sops -L https://github.com/getsops/sops/releases/download/v3.9.0/sops-v3.9.0.linux.amd64 \
     && sudo chmod +x /usr/local/bin/sops \
