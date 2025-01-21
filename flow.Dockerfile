@@ -4,7 +4,7 @@ FROM gitpod/workspace-base:2024-08-20-00-26-31
 # This version number is here in order to invalidate the Gitpod image cache whenever it changes.
 # Otherwise, Gitpod will not know to re-build the image after we release a new flowctl version.
 # From: https://github.com/gitpod-io/gitpod/issues/4126#issuecomment-830593427
-ENV FLOW_VERSION=v0.5.9
+ENV FLOW_VERSION=v0.5.10
 
 RUN echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list \
     && curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo gpg --dearmor -o /usr/share/keyrings/cloud.google.gpg \
