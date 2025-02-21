@@ -14,8 +14,6 @@ Preview applies data from your sourced collection to your work-in-progress deriv
 flowctl preview --source flow.yaml
 ```
 
-You can also pass `--infer-schema` to have preview update your collection schema based on the observed output documents.
-
 #### Generate SQL Stubs
 
 You can add additional transformations to a derivation using a placeholder file that doesn't exist yet, like:
