@@ -14,6 +14,8 @@
     // Always use Deno and enable linting.
     "deno.enable": true,
     "deno.lint": true,
+    // Do not show the welcome screen
+    "deno.showWelcome": false,
     // Format TypeScript files using deno.
     "[typescript]": { "editor.defaultFormatter": "denoland.vscode-deno" }
 }
