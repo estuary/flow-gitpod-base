@@ -8,8 +8,8 @@ set -o nounset
 # It should take ownership of the provided refresh token rather than create a new one, as it does today.
 # It also must handle secret rotation for non-multi-use refresh tokens, as this one is.
 
-ACCESS_TOKEN_PARAMS=$(echo "$FLOW_SETTINGS" | base64 -d | jq -c -r '{"refresh_token_id": .rt.id, "secret": .rt.secret}')
-DRAFT_ID=$(echo "$FLOW_SETTINGS" | base64 -d | jq -c -r '.id')
+ACCESS_TOKEN_PARAMS=$(echo "$F_S" | base64 -d | jq -c -r '{"refresh_token_id": .rt.id, "secret": .rt.secret}')
+DRAFT_ID=$(echo "$F_S" | base64 -d | jq -c -r '.id')
 
 # The --data below maps {id, secret} into {refresh_token_id, secret},
 # which are the parameters expected by `generate_access_token`.
