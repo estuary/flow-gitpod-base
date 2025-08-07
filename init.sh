@@ -8,6 +8,8 @@ set -o nounset
 # It should take ownership of the provided refresh token rather than create a new one, as it does today.
 # It also must handle secret rotation for non-multi-use refresh tokens, as this one is.
 
+# ui/src/services/gitpod.ts
+# This object is generated in the dashboard and has to stay in sync
 ACCESS_TOKEN_PARAMS=$(echo "$F_S" | base64 -d | jq -c -r '{"refresh_token_id": .rt.id, "secret": .rt.secret}')
 DRAFT_ID=$(echo "$F_S" | base64 -d | jq -c -r '.id')
 
